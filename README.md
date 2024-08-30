@@ -6,12 +6,12 @@ Predicting human Y chromosome haplogroups from ultra-low depth sequencing data
 #GenomeTester4 package contains programs gmer_counter, glistmaker, glistquery https://github.com/bioinfo-ut/Genometester4
 
 
-With fastq files:
+With fastq or fasta files:
 
 gmer_counter -dbb k-mers.dbb sample.fastq |cut -f 3 |tail -n +3 > sample_G.counts
 
 
-With bam(cram) files:
+With bam or cram files:
 
 samtools fasta sample.bam|gmer_counter -dbb k-mers.dbb - |cut -f 3 |tail -n +3 > sample_G.counts
 
