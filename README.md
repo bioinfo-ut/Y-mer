@@ -39,6 +39,7 @@ assembled chrY NA20509.HIFIRW.ONTUL.na.chrY.fasta
 #MODELS
 
 M213E
+https://bioinfo.ut.ee/randomtandem/mudelid/
 modelfile                                M213E/M213E_50k.Rdata
 k-mer dictionary for glistquery          M213E/M213E_50k.txt
 k-mer binary dictionary for gmer_counter M213E/M213E_50k.dbb
