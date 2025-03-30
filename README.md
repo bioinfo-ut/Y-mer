@@ -1,5 +1,8 @@
 # Y-mer
-Predicting human Y chromosome haplogroups from ultra-low depth sequencing data 
+
+A. Predicting human Y chromosome haplogroups from ultra-low depth sequencing data (k-mer counting and calling) 
+
+k-mer lists and model files are located https://doi.org/10.5281/zenodo.15089783
 
 
 #COUNTING K-MER FREQUENCIES
@@ -29,23 +32,28 @@ Calling commandline order is script, model file, sample counts file and R format
 Rscript PREDICTER.R model.Rdata sample_G.counts sample_result.RData > sample_result.txt
 
 
-#SAMPLES
+#SAMPLE files 
+https://bioinfo.ut.ee/randomtandem/mudelid/
 
 aDNA sample DA189 fastq reads ERR2505887.fastq.gz
 aDNA sample DA189 mapped bam file DA189.sort.rmdup.realign.md.bam
 
 assembled chrY NA20509.HIFIRW.ONTUL.na.chrY.fasta
 
-#MODELS
+#MODELS 
 
-M213E
-https://bioinfo.ut.ee/randomtandem/mudelid/
+https://doi.org/10.5281/zenodo.15089783 and https://bioinfo.ut.ee/randomtandem/mudelid/
 
-modelfile                                M213E/M213E_50k.Rdata
-k-mer dictionary for glistquery          M213E/M213E_50k.txt
-k-mer binary dictionary for gmer_counter M213E/M213E_50k.dbb
+Files types:
+modelfile                                M213E_50k.Rdata
+k-mer dictionary for glistquery          M213E_50k.txt
+k-mer binary dictionary for gmer_counter M213E_50k.dbb
 
 #WEB tool
 
-M21E
-https://bioinfo.ut.ee/randomtandem/magic/
+https://bioinfo.ut.ee/randomtandem/Y-mer/
+
+
+B. Building model
+
+Workflow description and perl script is in file Y-mer.pl
