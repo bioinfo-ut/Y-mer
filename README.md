@@ -57,7 +57,7 @@ https://bioinfo.ut.ee/randomtandem/Y-mer/
 #SAMPLES
 
 aDNA sample DA189 fastq reads https://bioinfo.ut.ee/randomtandem/mudelid/ERR2505887.fastq.gz
-aDNA sample DA189 mapped bam file https://bioinfo.ut.ee/randomtandem/mudelid/DA189.sort.rmdup.realign.md.bam
+\aDNA sample DA189 mapped bam file https://bioinfo.ut.ee/randomtandem/mudelid/DA189.sort.rmdup.realign.md.bam
 
 assembled chrY https://bioinfo.ut.ee/randomtandem/mudelid/NA20509.HIFIRW.ONTUL.na.chrY.fasta
 
