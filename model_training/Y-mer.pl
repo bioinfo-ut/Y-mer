@@ -46,7 +46,7 @@ while(<SISSE>){
       system("rm $working/".$tmp[$i].".aligned.bam*");
       system("$gtester/glistmaker $working/".$tmp[$i].".fastq -w 25 -o $working/".$tmp[$i]."");    #B
       ### C EXCLUDING K-MERS WITH LOWER FREQUENCIES
-      system("$gtester/glistquery $working/".$tmp[$i]."_25.list --distribution 100 |perl jaotus.pl |head -1 > $lists/".$tmp[$i]."_25.txt");
+      system("$gtester/glistquery $working/".$tmp[$i]."_25.list --distribution 100 |perl distribution.pl |head -1 > $lists/".$tmp[$i]."_25.txt");
       open JAOTUS, "$lists/".$tmp[$i]."_25.txt" or die;
       while(<JAOTUS>){
          chomp;
@@ -91,7 +91,7 @@ while(<SISSE>){
       system("rm $working/".$tmp[$i].".aligned.bam*");
       system("$gtester/glistmaker $working/".$tmp[$i].".fastq -w 25 -o $working/".$tmp[$i]."");  #B
       ### C EXCLUDING K-MERS WITH LOWER FREQUENCIES
-      system("$gtester/glistquery $working/".$tmp[$i]."_25.list --distribution 100 |perl jaotus.pl |head -1 > $lists/".$tmp[$i]."_25.txt");
+      system("$gtester/glistquery $working/".$tmp[$i]."_25.list --distribution 100 |perl distribution.pl |head -1 > $lists/".$tmp[$i]."_25.txt");
       open JAOTUS, "$lists/".$tmp[$i]."_25.txt" or die;
       while(<JAOTUS>){
          chomp;
@@ -248,7 +248,7 @@ foreach $arv (@arvud){
    
 system("sort -u k-merid_".$arv.".txt > k-merid_unic_".$arv.".txt");
 ## COMPARISION OF MODEL AND SEQUENCING DEPTH K-MERS IN SETS AND EXCLUDING PRESENTED IN BOTH SETS, ADDING "M" AND "N" MARKING FOR DIFFERENTIATE MODEL AND DEPTH K-MERS
-system("perl tee_nimekiri_v7.pl k-merid_unic_".$arv.".txt > k-merid_unic_".$arv."_NIPT.db");
+system("perl add_compare_depth_k_mers.pl k-merid_unic_".$arv.".txt > k-merid_unic_".$arv."_NIPT.db");
 ## MODEL K-MERS IN TXT FILE WITHOUT FREQUENCIES FOR USING GLISTQUERY
 system("cut -f 3 k-merid_unic_".$arv."_NIPT.db > k-merid_unic_".$arv."_NIPT.txt");
 
