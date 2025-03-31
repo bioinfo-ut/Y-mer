@@ -16,9 +16,16 @@ perl
 Please download files from directories 'model_training' or 'haplogroup_prediction' and https://doi.org/10.5281/zenodo.15089783
 according your interest.
 
-#COUNTING K-MER FREQUENCIES
-#GenomeTester4 package contains programs gmer_counter, glistmaker, glistquery https://github.com/bioinfo-ut/Genometester4
 
+MODEL TRAINING
+
+Insert samples data in files men.txt and women.txt, create directories 'data' and 'lists', look over 'bam' files location ans run
+perl Y-mer.pl
+
+
+HAPLOGROUP PREDICTION
+
+COUNTING K-MER FREQUENCIES
 
 With fastq or fasta files:
 
