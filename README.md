@@ -45,9 +45,9 @@ glistquery sample_25.list -f k-mers.txt |cut -f 2 > sample_G.counts
 
 B. CALLING HG-s
  
-Calling commandline order is script, model file, sample counts file and R formated output file name
+Calling commandline order is script model file sample counts file and R formated output file name
 
-Rscript PREDICTER.R model.Rdata sample_G.counts sample_result.RData > sample_result.txt
+**Rscript PREDICTER.R model.Rdata sample_G.counts sample_result.RData > sample_result.txt**
 
 
 #WEB tool
