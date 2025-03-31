@@ -20,7 +20,7 @@ according your interest.
 **MODEL TRAINING**
 
 Insert samples data in files men.txt and women.txt, create directories 'data' and 'lists', look over 'bam' files location ans run
-'perl Y-mer.pl'
+'**perl Y-mer.pl**'
 
 
 **HAPLOGROUP PREDICTION**
