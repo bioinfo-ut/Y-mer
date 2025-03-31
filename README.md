@@ -1,4 +1,4 @@
-# Y-mer
+**# Y-mer**
 
 Y-mer is a workflow for determining the Y chromosome haplogroup from very low-coverage sequencing data. 
 For this purpose, we have developed a workflow that allows users to create their own model from 
