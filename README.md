@@ -30,12 +30,12 @@ A. COUNTING K-MER FREQUENCIES
 
 With fastq or fasta files:
 
-gmer_counter -dbb k-mers.dbb sample.fastq |cut -f 3 |tail -n +3 > sample_G.counts
+gmer_counter -dbb k-mers.dbb sample.fastq |cut -f 3 |tail -n +3 > **sample_G.counts**
 
 
 With bam or cram files:
 
-samtools fasta sample.bam|gmer_counter -dbb k-mers.dbb - |cut -f 3 |tail -n +3 > sample_G.counts
+samtools fasta sample.bam|gmer_counter -dbb k-mers.dbb - |cut -f 3 |tail -n +3 > **sample_G.counts**
 
 
 With having GenomeTester4 based list file, mandatory if using multiple models:
