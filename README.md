@@ -17,13 +17,13 @@ Please download files from directories 'model_training' or 'haplogroup_predictio
 according your interest.
 
 
-MODEL TRAINING
+**MODEL TRAINING**
 
 Insert samples data in files men.txt and women.txt, create directories 'data' and 'lists', look over 'bam' files location ans run
 'perl Y-mer.pl'
 
 
-HAPLOGROUP PREDICTION
+**HAPLOGROUP PREDICTION**
 
 A. COUNTING K-MER FREQUENCIES
 
