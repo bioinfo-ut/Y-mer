@@ -39,7 +39,7 @@ samtools fasta sample.bam|gmer_counter -dbb k-mers.dbb - |cut -f 3 |tail -n +3 >
 
 With having GenomeTester4 based list file, mandatory if using multiple models:
 
-glistquery sample_25.list -f k-mers.txt |cut -f 2 > sample_G.counts
+**glistquery sample_25.list -f k-mers.txt |cut -f 2 > sample_G.counts**
 
 
 
