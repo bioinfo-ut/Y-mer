@@ -9,9 +9,9 @@ Please cite: Puurand, T. et al. (2024) ‘Y-mer: A k-mer based method for determ
 ultra-low sequencing depth data’. Available at: https://doi.org/10.21203/rs.3.rs-5042960/v1
 
 Required programs:
-GenomeTester4 https://github.com/bioinfo-ut/Genometester4 \ 
 R\
-perl
+perl\
+GenomeTester4 https://github.com/bioinfo-ut/Genometester4 
 
 Please download files from directories 'model_training' or 'haplogroup_prediction' and https://doi.org/10.5281/zenodo.15089783
 according your interest.
