@@ -19,9 +19,9 @@ according your interest.
 
 **MODEL TRAINING**
 
-Insert samples data in files men.txt and women.txt, create directories 'data' and 'lists', look over 'bam' files location ans run
+Insert samples data in files men.txt and women.txt, create directories 'data' and 'lists', look over 'bam' files location and run
 '**perl Y-mer.pl**'.
-SDD requirements is 30 GB per sample and RAM 80 GB during processing.
+SDD requirements is 30 GB per sample and RAM 80 GB during processing. Book running time approximately 1,5 h per sample, calculations time is SSD speed dependent.
 
 
 **HAPLOGROUP PREDICTION**
