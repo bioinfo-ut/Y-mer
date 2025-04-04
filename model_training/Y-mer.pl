@@ -25,8 +25,8 @@ $gtester = "GenomeTester4/src";    #we use GenomeTester4 for k-mer manipulations
 $working = "lists";                #SSD disk with best ReadWrite parameters
 $dsR = "data";                     #R scripts, calculated k-mer counts
 $lists = "lists";                  #k-mer binary list locations
-$mens = "mens.txt";                #one group of samples
-$womens = "womens.txt";            #second group of samples
+$mens = "men.txt";                #one group of samples
+$womens = "women.txt";            #second group of samples
 
 
 # 1. FEMALE UNION 
