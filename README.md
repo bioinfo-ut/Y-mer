@@ -68,4 +68,6 @@ assembled chrY https://bioinfo.ut.ee/randomtandem/mudelid/NA20509.HIFIRW.ONTUL.n
 
 https://bioinfo.ut.ee/randomtandem/mudelid/ and https://doi.org/10.5281/zenodo.15089783
 
-modelfile                                M213E/M213E_50k.Rdata\ k-mer dictionary for glistquery          M213E/M213E_50k.txt\ k-mer binary dictionary for gmer_counter M213E/M213E_50k.dbb
+modelfile                                M213E/M213E_50k.Rdata 
+k-mer dictionary for glistquery          M213E/M213E_50k.txt 
+k-mer binary dictionary for gmer_counter M213E/M213E_50k.dbb
