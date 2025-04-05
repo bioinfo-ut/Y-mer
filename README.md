@@ -1,7 +1,7 @@
 **# Y-mer**
 
-**Y-mer is a tool for determining the Y chromosome haplogroup from ultra-low-coverage (0.005-1x) sequence data using Y chromosome-specific k-mers. Its workflow allows users either\ 
-i) to create and train their own models from high-coverage reference sequences, or\ 
+**Y-mer is a tool for determining the Y chromosome haplogroup from ultra-low-coverage (0.005-1x) sequence data using Y chromosome-specific k-mers. Its workflow allows users either 
+i) to create and train their own models from high-coverage reference sequences, or 
 ii) to use already tested models 
 Y-mer will use either mapped (.bam) or unmapped (.fastq) sequence data as input and return most supported haplogroup names in its output along with statistical evidence for the support.**
 
