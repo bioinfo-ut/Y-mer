@@ -117,3 +117,101 @@ To work with other populations or increase resolution, users can train custom mo
 ### 1. Prepare Input Files
 - Include at least **10 individuals per haplogroup**
 - Format for `men.txt` (tab-separated):  
+HG_ID SAMPLE1_ID SAMPLE2_ID ...
+
+perl
+Kopeeri
+Redigeeri
+
+Modify the existing `men.txt` and `women.txt` files as needed.
+
+### 2. Set Up Directories
+```bash
+mkdir data lists
+Edit Y-mer.pl to include paths to .bam files, then run:
+
+bash
+Kopeeri
+Redigeeri
+perl Y-mer.pl
+System Requirements
+SSD: ~30 GB per sample
+
+RAM: ~80 GB
+
+Runtime: ~1.5 hours per sample (SSD speed-dependent)
+
+After processing, retain:
+
+Model .Rdata file
+
+.dbb database file
+
+Final .txt count table
+
+Optional: male-only k-mer list for future training
+
+All scripts can be adapted for HPC parallelization (within ~3 hours). We're working on support for this.
+
+🧬 Haplogroup Prediction (Pre-trained Models)
+Available Models
+M21W, M21E, M21NE, M110W, M213E, M222NE, M43I1, M80R1
+
+Each model uses:
+
+.txt for glistquery
+
+.dbb for gmer_counter
+
+🔗 Model Downloads
+https://bioinfo.ut.ee/randomtandem/mudelid/
+
+https://doi.org/10.5281/zenodo.15089783
+
+🔢 Counting K-mer Frequencies
+Option 1: Using .fastq and gmer_counter
+bash
+Kopeeri
+Redigeeri
+gmer_counter -dbb model.dbb /path/sample.fastq | cut -f 3 | tail -n +3 > sample.counts
+Option 2: Extract from .bam
+bash
+Kopeeri
+Redigeeri
+samtools fasta sample.bam | gmer_counter -dbb model.dbb - | cut -f 3 | tail -n +3 > sample.counts
+Option 3: Using GenomeTester4 list
+bash
+Kopeeri
+Redigeeri
+glistquery sample_25.list -f model.txt | cut -f 2 > sample.counts
+🔍 Predicting Haplogroups
+Run the R script to classify:
+
+bash
+Kopeeri
+Redigeeri
+Rscript PREDICTER.R model.Rdata sample.counts sample.Rdata > sample.txt
+sample.txt: Human-readable haplogroup output
+
+sample.Rdata: Saved R object for downstream analysis
+
+🌐 Web Tool
+Try the web-based version here:
+🔗 https://bioinfo.ut.ee/randomtandem/Y-mer/
+
+Accepts .fastq or .fastq.gz
+
+Select multiple models
+
+Returns .txt and .Rdata results
+
+Max input size: 0.5 GB
+
+📁 Example Data
+Sample	Description	Link
+DA189	Ancient DNA male sample (Damgaard et al., 2018)	ERR2505887.fastq.gz
+DA189.bam	Aligned BAM	DA189.sort.rmdup.realign.md.bam
+NA20509 chrY	Assembled chrY (Hallast et al., 2023)	NA20509.chrY.fasta
+📬 Contact
+For questions or contributions, please open an issue or contact the developers through bioinfo.ut.ee.
+
