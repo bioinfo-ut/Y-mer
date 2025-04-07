@@ -71,3 +71,49 @@ https://bioinfo.ut.ee/randomtandem/mudelid/ and https://doi.org/10.5281/zenodo.1
 modelfile                                M213E/M213E_50k.Rdata 
 k-mer dictionary for glistquery          M213E/M213E_50k.txt 
 k-mer binary dictionary for gmer_counter M213E/M213E_50k.dbb
+
+
+
+# Y-mer
+
+**Y-mer** is a tool for determining Y chromosome haplogroups from ultra-low-coverage (0.005–1×) sequencing data using Y chromosome-specific k-mers.
+
+Y-mer supports:
+- 🧬 Creating and training new models from high-coverage reference sequences
+- 📦 Using pre-trained models for quick prediction
+- 🔍 Accepting either mapped (`.bam`) or unmapped (`.fastq`) data
+
+Results include the most likely haplogroup(s) with statistical support.
+
+---
+
+## 📖 Citation
+
+Puurand, T. et al. (2024).  
+**_Y-mer: A k-mer-based method for determining human Y chromosome haplogroups from ultra-low sequencing depth data_**  
+[https://doi.org/10.21203/rs.3.rs-5042960/v1](https://doi.org/10.21203/rs.3.rs-5042960/v1)
+
+---
+
+## 🚀 Quick Start
+
+### Requirements
+- `R`
+- `perl`
+- [`GenomeTester4`](https://github.com/bioinfo-ut/Genometester4)
+
+### Download Required Files
+- Pre-trained models and resources:  
+  - [https://doi.org/10.5281/zenodo.15089783](https://doi.org/10.5281/zenodo.15089783)  
+  - [https://bioinfo.ut.ee/randomtandem/mudelid/](https://bioinfo.ut.ee/randomtandem/mudelid/)
+
+---
+
+## 🧪 Model Creation & Training
+
+Our pre-trained models are based on European haplogroups (e.g., 1000 Genomes and Estonian Biobank).  
+To work with other populations or increase resolution, users can train custom models.
+
+### 1. Prepare Input Files
+- Include at least **10 individuals per haplogroup**
+- Format for `men.txt` (tab-separated):  
