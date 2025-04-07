@@ -119,26 +119,19 @@ To work with other populations or increase resolution, users can train custom mo
 - Format for `men.txt` (tab-separated):  
 HG_ID SAMPLE1_ID SAMPLE2_ID ...
 
-perl
-Kopeeri
-Redigeeri
 
 Modify the existing `men.txt` and `women.txt` files as needed.
 
 ### 2. Set Up Directories
-```bash
+
 mkdir data lists
 Edit Y-mer.pl to include paths to .bam files, then run:
 
-bash
-Kopeeri
-Redigeeri
 perl Y-mer.pl
+
 System Requirements
 SSD: ~30 GB per sample
-
 RAM: ~80 GB
-
 Runtime: ~1.5 hours per sample (SSD speed-dependent)
 
 After processing, retain:
@@ -170,27 +163,20 @@ https://doi.org/10.5281/zenodo.15089783
 
 🔢 Counting K-mer Frequencies
 Option 1: Using .fastq and gmer_counter
-bash
-Kopeeri
-Redigeeri
+
 gmer_counter -dbb model.dbb /path/sample.fastq | cut -f 3 | tail -n +3 > sample.counts
 Option 2: Extract from .bam
-bash
-Kopeeri
-Redigeeri
+
 samtools fasta sample.bam | gmer_counter -dbb model.dbb - | cut -f 3 | tail -n +3 > sample.counts
 Option 3: Using GenomeTester4 list
-bash
-Kopeeri
-Redigeeri
+
 glistquery sample_25.list -f model.txt | cut -f 2 > sample.counts
+
 🔍 Predicting Haplogroups
 Run the R script to classify:
 
-bash
-Kopeeri
-Redigeeri
 Rscript PREDICTER.R model.Rdata sample.counts sample.Rdata > sample.txt
+
 sample.txt: Human-readable haplogroup output
 
 sample.Rdata: Saved R object for downstream analysis
