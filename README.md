@@ -100,8 +100,9 @@ gmer_counter -dbb model.dbb /path/sample.fastq | cut -f 3 | tail -n +3 > sample.
 samtools fasta sample.bam | gmer_counter -dbb model.dbb - | cut -f 3 | tail -n +3 > sample.counts
 ```
 
-### Option 3: Using `GenomeTester4` list
+### Option 3: Using `GenomeTester4` listmaker and glistquery
 ```bash
+glistmaker sample.fastq -w 25 -o sample
 glistquery sample_25.list -f model.txt | cut -f 2 > sample.counts
 ```
 
