@@ -142,6 +142,26 @@ Try the web-based version here:
 | `DA189.bam` | Aligned BAM | [DA189.sort.rmdup.realign.md.bam](https://bioinfo.ut.ee/randomtandem/mudelid/DA189.sort.rmdup.realign.md.bam) |
 | `NA20509 chrY` | Assembled chrY (Hallast et al., 2023) | [NA20509.chrY.fasta](https://bioinfo.ut.ee/randomtandem/mudelid/NA20509.HIFIRW.ONTUL.na.chrY.fasta) |
 
+The distance between sample and haplogroup hg profile, dh, indicates how similar the number of repeats profile of a sample are to the haplogroup average copy-number profile. Look closer output description in supplement methods file for Y-mer publication (Puurand et al. 2024).
+
+[1] "Diagnostics plots will not be produced"
+[1] "No sample ID-s found"
+[1] "Sample coverages:"
+        V1
+0.00553951
+[1] "Applying CG-related corrections"
+[1] "Sequencing coverage uniformity, Dli (smaller is better):"
+[1] 0
+[1] "Raw distances:"
+         AB        C        E       G       H       IJ       LT        N
+V1 3.246013 3.214565 3.166282 3.10242 3.39008 3.317615 2.975294 5.084806
+         O       Q          R
+V1 3.40771 3.08243 -0.4299814
+[1] "Most likely haplogroups (assuming contemporary DNA):"
+   sample   coverage haplogroup       pvalue alternatives
+DA189     DA189 0.00553951          R 1.549354e-17             
+
+
 ---
 
 ## 📬 Contact
