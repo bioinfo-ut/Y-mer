@@ -14,7 +14,7 @@ Results include the most likely haplogroup(s) with statistical support.
 
 ## 📖 Citation
 
-Puurand, T. et al. (2024).  
+Puurand T, Möls M, Kaplinski L, Maal K, Krjutskov K, Salumets A, Kivisild T, Remm M. (2025).  
 **_Y-mer: A k-mer-based method for determining human Y chromosome haplogroups from ultra-low sequencing depth data_**  
 [https://doi.org/10.21203/rs.3.rs-5042960/v1](https://doi.org/10.21203/rs.3.rs-5042960/v1)
 
