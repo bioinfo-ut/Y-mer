@@ -142,9 +142,9 @@ Try the web-based version here:
 | `DA189.bam` | Aligned BAM | [DA189.sort.rmdup.realign.md.bam](https://bioinfo.ut.ee/randomtandem/mudelid/DA189.sort.rmdup.realign.md.bam) |
 | `NA20509 chrY` | Assembled chrY (Hallast et al., 2023) | [NA20509.chrY.fasta](https://bioinfo.ut.ee/randomtandem/mudelid/NA20509.HIFIRW.ONTUL.na.chrY.fasta) |
 
-The distance between sample and haplogroup hg profile, dh, indicates how similar the number of repeats profile of a sample are to the haplogroup average copy-number profile. Look closer output description in supplement methods file for Y-mer publication (Puurand et al. 2024).
+The distance between the sample and the haplogroup gh profiles, dh, indicates how similar the number of repeats profile of a sample is to the haplogroup average copy-number profile. A more detailed description of the output can be found in the supplementary methods file of the Y-mer publication (Puurand et al. 2025).
 
-The currently available models include\ 11 basic haplogroups (AB, C, E, G, H, IJ, LT, N, O, Q, R) that are common  at the World (W),\ 22 (AB, C, E1, E2, E4, G, H, I1, I2, J1, J2, LT, N3, N4, O1, O2'5, O3, O6, Q, R1a, R1b, R2) at European (E), and\ 23 (E2a, G2a, I1a, I1d, I1i, I1m, I2, Ic, J1, J2a, J2b, LT, N3a3, N3a4, Q, R1a1, R1a2, R1b1, R1b11, R1b2, R1b3, R1b6, R1b8) at Northeast European (NE) levels. The k-mers used in the models have been extracted from sets of 21, 110, 213 and 222 Y chromosomes and the models have been trained on subsets of individuals from the 1000G and EGC projects data. The I1 and R1 models predict only the specified subclades of the given haplogroups.
+The currently available models include 11 basic haplogroups (AB, C, E, G, H, IJ, LT, N, O, Q, R) that are common  at the World (W), 22 (AB, C, E1, E2, E4, G, H, I1, I2, J1, J2, LT, N3, N4, O1, O2'5, O3, O6, Q, R1a, R1b, R2) at European (E), and 23 (E2a, G2a, I1a, I1d, I1i, I1m, I2, Ic, J1, J2a, J2b, LT, N3a3, N3a4, Q, R1a1, R1a2, R1b1, R1b11, R1b2, R1b3, R1b6, R1b8) at Northeast European (NE) levels. The k-mers used in the models have been extracted from sets of 21, 110, 213 and 222 Y chromosomes and the models have been trained on subsets of individuals from the 1000G and EGC projects data. The I1 and R1 models predict only the specified subclades of the given haplogroups.
 
 ```bash
 [1] "Diagnostics plots will not be produced"
