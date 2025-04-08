@@ -122,6 +122,8 @@ Rscript PREDICTER.R model.Rdata sample.counts sample.Rdata > sample.txt
 
 ## 🌐 Web Tool
 
+Y-mer uses Y chromosome-specific k-mers and distance-based models to predict Y chromosome haplogroups (Yhg). With this tool the user can upload their own data in the form of a fastq file.  Y-mer will determine the closest Yhg for the uploaded sample in the chosen model on the basis of highest similarity.
+
 Try the web-based version here:  
 🔗 [https://bioinfo.ut.ee/randomtandem/Y-mer/](https://bioinfo.ut.ee/randomtandem/Y-mer/)
 
