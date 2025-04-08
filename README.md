@@ -145,3 +145,4 @@ Try the web-based version here:
 ## 📬 Contact
 
 For questions or contributions, please open an issue or contact the developers through [bioinfo.ut.ee](https://bioinfo.ut.ee).
+Formatted by ChatGPT
