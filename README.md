@@ -67,7 +67,7 @@ After processing, retain:
 - Model `.Rdata` file  
 - `.dbb` database file  
 - Final `.txt` count table  
-- Optional: male-only k-mer list for future training
+- Optional: male-only k-mer binary list for future training
 
 > All scripts can be adapted for HPC parallelization (within ~3 hours). We're working on support for this.
 
