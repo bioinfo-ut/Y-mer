@@ -25,7 +25,7 @@ Puurand T, Möls M, Kaplinski L, Maal K, Krjutskov K, Salumets A, Kivisild T, Re
 ### Requirements
 - `R`
 - `perl`
-- [`GenomeTester4`](https://github.com/bioinfo-ut/Genometester4)
+- [`GenomeTester4`](https://github.com/bioinfo-ut/Genometester4) Must be installed and used with the correct path.
 
 ### Download Required Files
 - Pre-trained models and resources:  
