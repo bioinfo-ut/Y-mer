@@ -8,7 +8,7 @@ Y-mer supports:
 - 📦 Using pre-trained models for quick prediction
 - 🔍 Accepting either mapped (`.bam`) or unmapped (`.fastq`) data
 
-Results include the most likely haplogroup(s) with statistical support.
+Results include the most likely haplogroup(s) with statistics.
 
 ---
 
