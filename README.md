@@ -143,7 +143,7 @@ Try the web-based version here:
 | `NA20509 chrY` | Assembled chrY (Hallast et al., 2023) | [NA20509.chrY.fasta](https://bioinfo.ut.ee/randomtandem/mudelid/NA20509.HIFIRW.ONTUL.na.chrY.fasta) |
 
 The distance between sample and haplogroup hg profile, dh, indicates how similar the number of repeats profile of a sample are to the haplogroup average copy-number profile. Look closer output description in supplement methods file for Y-mer publication (Puurand et al. 2024).
-
+```bash
 [1] "Diagnostics plots will not be produced"
 [1] "No sample ID-s found"
 [1] "Sample coverages:"
@@ -160,7 +160,7 @@ V1 3.40771 3.08243 -0.4299814
 [1] "Most likely haplogroups (assuming contemporary DNA):"
    sample   coverage haplogroup       pvalue alternatives
 DA189     DA189 0.00553951          R 1.549354e-17             
-
+```
 
 ---
 
