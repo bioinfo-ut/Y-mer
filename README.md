@@ -92,7 +92,7 @@ Each model uses:
 
 ### Option 1: Using `.fastq` and `gmer_counter`
 ```bash
-gmer_counter -dbb model.dbb /path/sample.fastq | cut -f 3 | tail -n +3 > sample.counts
+gmer_counter -dbb model.dbb sample.fastq | cut -f 3 | tail -n +3 > sample.counts
 ```
 
 ### Option 2: Extract from `.bam`
