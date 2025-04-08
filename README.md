@@ -75,7 +75,7 @@ After processing, retain:
 
 ## 🧬 Haplogroup Prediction (Pre-trained Models)
 
-### Available Models
+### Available Models .Rdata
 `M21W`, `M21E`, `M21NE`, `M110W`, `M213E`, `M222NE`, `M43I1`, `M80R1`
 
 Each model uses:
