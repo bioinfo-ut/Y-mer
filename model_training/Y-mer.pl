@@ -43,8 +43,8 @@ while(<SAMPLES>){
    chomp;
    @1000Genomes = split(/\t/);
    @samples_file = split(/\//,$1000Genomes[0]);
-   $samples{$1000Genomes[9]} = $1000Genomes[0];
-   $samples_name{$1000Genomes[9]} = $sample_file[scalar(@samples_file)-1];
+   $samples{$1000Genomes[9]} = $1000Genomes[0];   # hash there key is sample ID and value is cram file location
+   $samples_name{$1000Genomes[9]} = $sample_file[scalar(@samples_file)-1]; # hash there key is sample ID and value is cram file name
 }
 close SAMPLES;
 
