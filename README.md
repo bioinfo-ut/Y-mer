@@ -46,10 +46,16 @@ It is recommended to create a directory listing in by model ID (M21W, M21E, M21N
 ---
 ## 🧪 Model Creation & Training
 
+At the moment, our ready-to-use models are adapted for the detection of the main sub-clades of haplogroups common in present-day Europe and miss many important haplogroups that are either uncommon or frequent outside Europe.  These restrictions were set by our use of  the 1000 Genomes Project and the Estonian Biobank data as references in the models we have generated and tested. When working with data from other world regions or when aiming for higher haplogroup resolution within a region, the users can design their own haplogroup lists and train their own models based on high quality reference data they have access to. 
+
 Our pre-trained models are based on European haplogroups (e.g., 1000 Genomes and Estonian Biobank).  
 To work with other populations or increase resolution, users can train custom models.
 
 ### 1. Prepare Input Files
+The first step of creating a new model involves the generation of a list from bam( cram or fastq) files of high quality genomes representing, ideally with at least 10 individuals per each targeted haplogroup, from the range of haplogroups to be examined. The IDs of each of these bam files should be presented as a list in a table, similar to the example file men.txt . In this tab-separated file, each line represents one haplogroup to be included. The name of each haplogroup is shown in the first column. Other columns show ID-s of individuals from the given haplogroup. There is no limit set to the number of individuals but 10 individuals is advisable as a minimum.
+ 
+The structure of the women.txt file, containing the ID-s of female WGS data from which femal k-mer lists will be created, is the same as the men.txt but has only just one row, where the entry in the first column should be ‘N’, followed by entries of the IDs of female WGS data to be used. In case of the available models, we have used 15 female high-coverage genomes for building female k-mer lists.
+
 - Include at least **10 individuals per haplogroup**
 - Format for `men.txt` (tab-separated):  
   ```
