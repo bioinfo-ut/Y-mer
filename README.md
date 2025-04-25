@@ -48,9 +48,6 @@ It is recommended to create a directory listing in by model ID (M21W, M21E, M21N
 
 At the moment, our ready-to-use models are adapted for the detection of the main sub-clades of haplogroups common in present-day Europe and miss many important haplogroups that are either uncommon or frequent outside Europe.  These restrictions were set by our use of  the 1000 Genomes Project and the Estonian Biobank data as references in the models we have generated and tested. When working with data from other world regions or when aiming for higher haplogroup resolution within a region, the users can design their own haplogroup lists and train their own models based on high quality reference data they have access to. 
 
-Our pre-trained models are based on European haplogroups (e.g., 1000 Genomes and Estonian Biobank).  
-To work with other populations or increase resolution, users can train custom models.
-
 ### 1. Prepare Input Files
 The first step of creating a new model involves the generation of a list from bam( cram or fastq) files of high quality genomes representing, ideally with at least 10 individuals per each targeted haplogroup, from the range of haplogroups to be examined. The IDs of each of these bam files should be presented as a list in a table, similar to the example file [`men.txt`](https://github.com/bioinfo-ut/Y-mer/blob/main/model_training/men.txt) . In this tab-separated file, each line represents one haplogroup to be included. The name of each haplogroup is shown in the first column. Other columns show ID-s of individuals from the given haplogroup. There is no limit set to the number of individuals but 10 individuals is advisable as a minimum.
  
@@ -65,15 +62,21 @@ The structure of the [`women.txt`](https://github.com/bioinfo-ut/Y-mer/blob/main
 Modify the existing `men.txt` and `women.txt` files as needed.
 
 ### 2. Set Up Directories
+For structuring data, including temporary data, Y-mer workflow uses ‘data’ and ‘lists’ directory, which can be created:
+
 ```bash
 mkdir data lists
 ```
-
-Edit `Y-mer.pl` to include paths to `.bam` files, then run:
+File type can be .bam (‘B’, .cram (‘C’), or .fastq (‘F’)
+Command line for running Y-mer script with a model on some data: 
 ```bash
-perl Y-mer.pl
+perl Y-mer.pl <file type> <name of a model>
 ```
-
+The name of the model can include specific parameter details that the user considers important for the task. We have used the number of individuals in the reference set (e.g. 213) and the number of chosen k-mers (e.g. 50,000) to define models, such as ‘M213E_50k’. 
+Command line in case of this example, if starting with .bam file would be:
+```bash
+perl Y-mer.pl <file type> <name of a model>
+```
 ### System Requirements
 - **SSD**: ~30 GB per sample  
 - **RAM**: ~80 GB  
