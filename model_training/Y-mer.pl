@@ -25,8 +25,8 @@ $gtester = "GenomeTester4/src";    #we use GenomeTester4 for k-mer manipulations
 $working = "lists";                #SSD disk with best ReadWrite parameters
 $dsR = "data";                     #R scripts, calculated k-mer counts
 $lists = "lists";                  #k-mer binary list locations
-$mens = "men.txt";                #one group of samples
-$womens = "women.txt";            #second group of samples
+$men = "men.txt";                #one group of samples
+$women = "women.txt";            #second group of samples
 
 
 # 1. FEMALE UNION 
@@ -36,7 +36,13 @@ $womens = "women.txt";            #second group of samples
 # C. REMOVING SEQUENCING ERRORS BY EXCLUDING K-MERS WITH LOWER FREQUENCIES 
 # D. ADDING FEMALES K-MERS TO UNION LIST
 
-open SISSE, "$womens" or die;
+open SISSE, "1000genomes.high_coverage.GRCh38DH.alignment.index" or die;
+while(<SISSE>){
+   chomp;
+   @1000Genomes = split(/\t/);
+   $samples{$1000Genomes[]} = $1000Genomes[0];
+
+open SISSE, "$women" or die;
 while(<SISSE>){
    chomp;
    @tmp = split(/\t/);
@@ -78,7 +84,7 @@ close SISSE;
 # C. REMOVING SEQUENCING ERRORS BY EXCLUDING K-MERS WITH LOWER FREQUENCIES 
 # D. ADDING MALES K-MERS TO HG INTERSECTION LIST
 
-open SISSE, "$mens" or die;
+open SISSE, "$men" or die;
 while(<SISSE>){
    chomp;
    @tmp = split(/\t/);
@@ -120,7 +126,7 @@ close SISSE;
 # 3. MALES HGs UNION
 # ALL CHRY SPECIFIC HGs K-MERs LISTS ARE JOINED TO MALES MODEL HSs UNIOIN
 $i = 0;
-open SISSE, "$mens" or die;
+open SISSE, "$men" or die;
 while(<SISSE>){
    chomp;
    @tmp = split(/\t/);
@@ -144,7 +150,7 @@ system("$gtester/glistquery $working/HGs_FEMOUT_25_union.list | cut -f 1 > $list
 # 4.1. COUNTS PER MALE FOR FMCENTRO
 # USING GLISTQUERY ALL K-MERS FREQUENCIES ARE QUERIED FOR ALL MALES SAMPLES AND NORMALIZED WITH SEQUENCING DEPTH CALCULATED WITH HELP OF JAOTUS.PL
 
-open SISSE, "$mens" or die;
+open SISSE, "$men" or die;
 while(<SISSE>){
    chomp;
    @tmp = split(/\t/);
@@ -185,7 +191,7 @@ system("tail -n +2 $lists/HGs_FEMOUT_25_union_tab.txt > $lists/HGs_FEMOUT_25_uni
 # 4.3. FILES FOR MWS AND MWS
 # CALCULATES MANN-WHITNEY TEST FOR EVERY K-MER BASED ON AVERAGE FREQUENCY IN HG AND OUT OF HG SAMPLES
 
-open NIMED, "$mens" or die;
+open NIMED, "$men" or die;
 open PAIS_1, ">FM_inid.txt" or die; 
 while(<NIMED>){
    chomp;
@@ -206,7 +212,7 @@ close NIMED;
 ## CYCLE FOR EVERY HG
 foreach $grupp (@grupid){
     open PAIS_2, ">".$grupp."_inid.txt" or die;
-    open NIMED, "$mens" or die;
+    open NIMED, "$men" or die;
     while(<NIMED>){
        chomp;
        @tmp = split(/\t/);
@@ -254,7 +260,7 @@ system("cut -f 3 ".$ARGV[1]."_".$arv."_NIPT.db > ".$ARGV[1]."_".$arv."_NIPT.txt"
 # CREATING MODEL
 # 5.1. COUNTS FOR MODEL INPUT K-MERS
 
-open SISSE, "$mens" or die;
+open SISSE, "$men" or die;
 while(<SISSE>){
    chomp;
    @tmp = split(/\t/);
@@ -281,7 +287,7 @@ foreach $arv (@arvud){
    close KMER;
 
  
-   open NIMED, "$mens" or die;
+   open NIMED, "$men" or die;
    open VALJA, ">".$ARGV[1]."_".$arv.".txt" or die;
    $tulp = 1;
    while(<NIMED>){
