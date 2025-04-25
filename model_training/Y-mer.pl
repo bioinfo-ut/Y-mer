@@ -41,7 +41,7 @@ while(<SISSE>){
    chomp;
    @tmp = split(/\t/);
    for($i = 1; $i < scalar(@tmp); $i++){
-      system("cp /gpfs/space/GI/GV/Projects/Y-mer/pb/females/".$tmp[$i].".aligned.bam* $working"); # BAM FILE COPING, (WGET FROM WWW)
+      system("cp ".$tmp[$i].".aligned.bam* $working"); # BAM FILE COPING, (WGET FROM WWW)
       system("samtools bam2fq $working/".$tmp[$i].".aligned.bam > $working/".$tmp[$i].".fastq");   #A
       system("rm $working/".$tmp[$i].".aligned.bam*");
       system("$gtester/glistmaker $working/".$tmp[$i].".fastq -w 25 -o $working/".$tmp[$i]."");    #B
@@ -86,7 +86,7 @@ while(<SISSE>){
    @tmp = split(/\t/);
    push @grupid, $tmp[0];
    for($i = 1; $i < scalar(@tmp); $i++){
-      system("cp /gpfs/space/GI/GV/Projects/Y-mer/pb/males/".$tmp[$i].".aligned.bam* $working");
+      system("cp ".$tmp[$i].".aligned.bam* $working");
       system("samtools bam2fq $working/".$tmp[$i].".aligned.bam > $working/".$tmp[$i].".fastq"); #A
       system("rm $working/".$tmp[$i].".aligned.bam*");
       system("$gtester/glistmaker $working/".$tmp[$i].".fastq -w 25 -o $working/".$tmp[$i]."");  #B
