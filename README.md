@@ -1,7 +1,7 @@
 IN MODIFICATION!
 # Y-mer
 
-**Y-mer** is a tool for determining Y chromosome haplogroups from ultra-low-coverage (0.005–1×) sequencing data using Y chromosome-specific k-mers.
+**Y-mer** is a tool for determining Y chromosome haplogroups from ultra-low-coverage (0.005–1× with high confidence) sequencing data using Y chromosome-specific k-mers.
 
 Y-mer supports:
 - 🧬 Creating and training new models from high-coverage WGS individual reads
@@ -20,12 +20,13 @@ Puurand T, Möls M, Kaplinski L, Maal K, Krjutskov K, Salumets A, Kivisild T, Re
 
 ---
 
-## 🚀 Quick Start
+## 🚀 Quick Start In Linux
 
 ### Requirements
 - `R`
 - `perl`
 - [`GenomeTester4`](https://github.com/bioinfo-ut/Genometester4) Must be installed and used with the local installation path.
+- [`samtools`](https://github.com/samtools/samtools) if starting with BAM/CRAM files 
 
 ### Download Required Files
 - Pre-trained models and resources:  
