@@ -159,8 +159,13 @@ glistquery sample_25.list -f model.txt | cut -f 2 > sample.counts
 
 Run the R script to classify:
 ```bash
-Rscript PREDICTER.R model.Rdata sample.counts sample.Rdata > sample.txt
+Rscript PREDICTER.R model_path/model.Rdata results_path/sample.counts results_path/sample.Rdata > results_path/sample.txt
 ```
+After k-mer counting, Rscript command predicts haplogroups using the trained model (model.Rdata) and k-mer counts based on tested sample (sample.counts). Results  will be written to an output files sample.txt and R formatted output (sample.Rdata). If multiple model is used then model ID should be added into results file name (tested models IDs: M21W, M21E, M21NE, M110W, M213E, M222NE, M43I1, and M80R1). 
+
+Sample.txt file, see below under ‘RESULTS FILE FOR EXAMPLE DA189’ an example, reports its distances to all haplogroups included in the model testing. 
+The last line of this file shows in the third column the Y chromosome coverage of the target sample, followed by the most likely haplogroup and its p-value.
+The Sample.Rdata file include only the last two lines of the Sample.txt output.
 
 - `sample.txt`: Human-readable haplogroup output  
 - `sample.Rdata`: Saved R object for downstream analysis
@@ -168,6 +173,7 @@ Rscript PREDICTER.R model.Rdata sample.counts sample.Rdata > sample.txt
 ---
 
 ## 🌐 Web Tool
+Apart from the option to run haplogroup calling with existing models in the cluster of the user, we have developed also a simplified WEB tool version which uses fastq or fastq.gz files as input. The user may choose for HG predictions between all models provided by us. Results page contains links to .txt and Rdata output files with HG predictions as explained above. Fastq inputfile size limit is 0.5GB and retrieving time depends on uploaded file size and count of selected models.
 
 Y-mer uses Y chromosome-specific k-mers and distance-based models to predict Y chromosome haplogroups (Yhg). With this tool the user can upload their own data in the form of a fastq file.  Y-mer will determine the closest Yhg for the uploaded sample in the chosen model on the basis of highest similarity.
 
