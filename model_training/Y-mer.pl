@@ -36,21 +36,28 @@ $women = "women.txt";            #second group of samples
 # C. REMOVING SEQUENCING ERRORS BY EXCLUDING K-MERS WITH LOWER FREQUENCIES 
 # D. ADDING FEMALES K-MERS TO UNION LIST
 
-open SISSE, "1000genomes.high_coverage.GRCh38DH.alignment.index" or die;
-while(<SISSE>){
+
+#samples cram files downloading
+open SAMPLES, "1000G_2504_high_coverage.sequence.index" or die;
+while(<SAMPLES>){
    chomp;
    @1000Genomes = split(/\t/);
-   $samples{$1000Genomes[]} = $1000Genomes[0];
+   @samples_file = split(/\//,$1000Genomes[0]);
+   $samples{$1000Genomes[9]} = $1000Genomes[0];
+   $samples_name{$1000Genomes[9]} = $sample_file[scalar(@samples_file)-1];
+}
+close SAMPLES;
 
 open SISSE, "$women" or die;
 while(<SISSE>){
-   chomp;
+   chomp;if $ARGV[0] ne "F"
    @tmp = split(/\t/);
    for($i = 1; $i < scalar(@tmp); $i++){
-      system("cp ".$tmp[$i].".aligned.bam* $working"); # BAM FILE COPING, (WGET FROM WWW)
-      system("samtools bam2fq $working/".$tmp[$i].".aligned.bam > $working/".$tmp[$i].".fastq");   #A
-      system("rm $working/".$tmp[$i].".aligned.bam*");
-      system("$gtester/glistmaker $working/".$tmp[$i].".fastq -w 25 -o $working/".$tmp[$i]."");    #B
+      system("wget $samples{$tmp[$i]}*") if $ARGV[0] ne "F";
+      system("cp $samples_name{$tmp[$i]}* $working") if $ARGV[0] ne "F";
+      system("samtools bam2fq -1 $working/".$tmp[$i]."_1.fastq -2 $working/".$tmp[$i]."_2.fastq $orking/$samples_name{$tmp[$i]}") if $ARGV[0] ne "F";
+      system("rm $working/$samples_name{$tmp[$i]}*") if $ARGV[0] ne "F";
+      system("$gtester/glistmaker $working/".$tmp[$i].".fastq -w 25 -o $working/".$tmp[$i]."");
       ### C EXCLUDING K-MERS WITH LOWER FREQUENCIES
       system("$gtester/glistquery $working/".$tmp[$i]."_25.list --distribution 100 |perl distribution.pl |head -1 > $lists/".$tmp[$i]."_25.txt");
       open JAOTUS, "$lists/".$tmp[$i]."_25.txt" or die;
@@ -58,7 +65,7 @@ while(<SISSE>){
          chomp;
          @jaotus = split(/\t/);
          $katvus{$tmp[$i]} = $jaotus[1];
-         system("$gtester/glistcompare $working/".$tmp[$i]."_25.list $working/".$tmp[$i]."_25.list -i -c $jaotus[0] -o $working/".$tmp[$i].""); #C
+         system("$gtester/glistcompare $working/".$tmp[$i]."_25.list $working/".$tmp[$i]."_25.list -i -c $jaotus[0] -o $working/".$tmp[$i]."");
          system("rm $working/".$tmp[$i]."_25.list");
       }
       close JAOTUS;
@@ -90,10 +97,11 @@ while(<SISSE>){
    @tmp = split(/\t/);
    push @grupid, $tmp[0];
    for($i = 1; $i < scalar(@tmp); $i++){
-      system("cp ".$tmp[$i].".aligned.bam* $working");
-      system("samtools bam2fq $working/".$tmp[$i].".aligned.bam > $working/".$tmp[$i].".fastq"); #A
-      system("rm $working/".$tmp[$i].".aligned.bam*");
-      system("$gtester/glistmaker $working/".$tmp[$i].".fastq -w 25 -o $working/".$tmp[$i]."");  #B
+      system("wget $samples{$tmp[$i]}*") if $ARGV[0] ne "F";
+      system("cp $samples_name{$tmp[$i]}* $working") if $ARGV[0] ne "F";
+      system("samtools bam2fq -1 $working/".$tmp[$i]."_1.fastq -2 $working/".$tmp[$i]."_2.fastq $orking/$samples_name{$tmp[$i]}") if $ARGV[0] ne "F";
+      system("rm $working/$samples_name{$tmp[$i]}*") if $ARGV[0] ne "F";
+      system("$gtester/glistmaker $working/".$tmp[$i].".fastq -w 25 -o $working/".$tmp[$i]."");
       ### C EXCLUDING K-MERS WITH LOWER FREQUENCIES
       system("$gtester/glistquery $working/".$tmp[$i]."_25.list --distribution 100 |perl distribution.pl |head -1 > $lists/".$tmp[$i]."_25.txt");
       open JAOTUS, "$lists/".$tmp[$i]."_25.txt" or die;
