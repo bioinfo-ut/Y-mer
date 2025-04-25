@@ -75,7 +75,7 @@ perl Y-mer.pl <file type> <name of a model>
 The name of the model can include specific parameter details that the user considers important for the task. We have used the number of individuals in the reference set (e.g. 213) and the number of chosen k-mers (e.g. 50,000) to define models, such as ‘M213E_50k’. 
 Command line in case of this example, if starting with .bam file would be:
 ```bash
-perl Y-mer.pl <file type> <name of a model>
+perl Y-mer.pl B M213E_50k
 ```
 ### System Requirements
 - **SSD**: ~30 GB per sample  
