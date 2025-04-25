@@ -57,7 +57,7 @@ while(<SISSE>){
       system("cp $samples_name{$tmp[$i]}* $working") if $ARGV[0] ne "F";
       system("samtools bam2fq -1 $working/".$tmp[$i]."_1.fastq -2 $working/".$tmp[$i]."_2.fastq $orking/$samples_name{$tmp[$i]}") if $ARGV[0] ne "F";
       system("rm $working/$samples_name{$tmp[$i]}*") if $ARGV[0] ne "F";
-      system("$gtester/glistmaker $working/".$tmp[$i].".fastq -w 25 -o $working/".$tmp[$i]."");
+      system("$gtester/glistmaker $working/".$tmp[$i]."_1.fastq $working/".$tmp[$i]."_2.fastq -w 25 -o $working/".$tmp[$i]."");
       ### C EXCLUDING K-MERS WITH LOWER FREQUENCIES
       system("$gtester/glistquery $working/".$tmp[$i]."_25.list --distribution 100 |perl distribution.pl |head -1 > $lists/".$tmp[$i]."_25.txt");
       open JAOTUS, "$lists/".$tmp[$i]."_25.txt" or die;
@@ -101,7 +101,7 @@ while(<SISSE>){
       system("cp $samples_name{$tmp[$i]}* $working") if $ARGV[0] ne "F";
       system("samtools bam2fq -1 $working/".$tmp[$i]."_1.fastq -2 $working/".$tmp[$i]."_2.fastq $orking/$samples_name{$tmp[$i]}") if $ARGV[0] ne "F";
       system("rm $working/$samples_name{$tmp[$i]}*") if $ARGV[0] ne "F";
-      system("$gtester/glistmaker $working/".$tmp[$i].".fastq -w 25 -o $working/".$tmp[$i]."");
+      system("$gtester/glistmaker $working/".$tmp[$i]."_1.fastq $working/".$tmp[$i]."_2.fastq -w 25 -o $working/".$tmp[$i]."");
       ### C EXCLUDING K-MERS WITH LOWER FREQUENCIES
       system("$gtester/glistquery $working/".$tmp[$i]."_25.list --distribution 100 |perl distribution.pl |head -1 > $lists/".$tmp[$i]."_25.txt");
       open JAOTUS, "$lists/".$tmp[$i]."_25.txt" or die;
