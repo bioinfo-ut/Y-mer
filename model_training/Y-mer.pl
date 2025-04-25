@@ -62,13 +62,11 @@ while(<SISSE>){
       system("$gtester/glistcompare $working/".$tmp[$i]."_25_intrsec.list $working/".$tmp[$i]."_25_intrsec.list -u -o $working/".$tmp[0]."_".$i."") if $i == 1; #D
       system("$gtester/glistcompare $working/".$tmp[0]."_".$k."_25_union.list $working/".$tmp[$i]."_25_intrsec.list -u -o $working/".$tmp[0]."_".$i."") if $i > 1;  #D
       system("rm $working/".$tmp[0]."_".$k."_25_union.list");
-      system("mv $working/".$tmp[$i]."_25_intrsec.list /gpfs/space/GI/GV/Projects/Y-mer/pb/females");
    }
    $i = $i -1;
 
    ### FEMALES UNION LIST
    system("mv $working/".$tmp[0]."_".$i."_25_union.list $working/".$tmp[0]."_25_union.list");
-   system("cp $working/".$tmp[0]."_25_union.list /gpfs/space/GI/GV/Projects/Y-mer/pb/females/");
 
 }
 close SISSE;
@@ -106,7 +104,6 @@ while(<SISSE>){
       system("$gtester/glistcompare $working/".$tmp[$i]."_25_intrsec.list $working/".$tmp[$i]."_25_intrsec.list -i -o $working/".$tmp[0]."_".$i."") if $i == 1; #D
       system("$gtester/glistcompare $working/".$tmp[0]."_".$k."_25_intrsec.list $working/".$tmp[$i]."_25_intrsec.list -i -o $working/".$tmp[0]."_".$i."") if $i > 1; #D
       system("rm $working/".$tmp[0]."_".$k."_25_intrsec.list");
-      system("cp $working/".$tmp[$i]."_25_intrsec.list /gpfs/space/GI/GV/Projects/Y-mer/pb/males");
    }
    $i = $i -1;
 
@@ -248,9 +245,9 @@ foreach $arv (@arvud){
    
 system("sort -u k-merid_".$arv.".txt > k-merid_unic_".$arv.".txt");
 ## COMPARISION OF MODEL AND SEQUENCING DEPTH K-MERS IN SETS AND EXCLUDING PRESENTED IN BOTH SETS, ADDING "M" AND "N" MARKING FOR DIFFERENTIATE MODEL AND DEPTH K-MERS
-system("perl add_compare_depth_k_mers.pl k-merid_unic_".$arv.".txt > k-merid_unic_".$arv."_NIPT.db");
+system("perl add_compare_depth_k_mers.pl k-merid_unic_".$arv.".txt > ".$ARGV[1]."_".$arv."_NIPT.db");
 ## MODEL K-MERS IN TXT FILE WITHOUT FREQUENCIES FOR USING GLISTQUERY
-system("cut -f 3 k-merid_unic_".$arv."_NIPT.db > k-merid_unic_".$arv."_NIPT.txt");
+system("cut -f 3 ".$ARGV[1]."_".$arv."_NIPT.db > ".$ARGV[1]."_".$arv."_NIPT.txt");
 
 }
 
@@ -263,7 +260,7 @@ while(<SISSE>){
    @tmp = split(/\t/);
    foreach $arv (@arvud){
       for($i = 1; $i < scalar(@tmp); $i++){
-         system("$gtester/glistquery $working/".$tmp[$i]."_25_intrsec.list -f k-merid_unic_".$arv."_NIPT.txt |cut -f 2 > $dsR/".$tmp[$i]."_".$arv.".counts2");
+         system("$gtester/glistquery $working/".$tmp[$i]."_25_intrsec.list -f ".$ARGV[1]."_".$arv."_NIPT.txt |cut -f 2 > $dsR/".$tmp[$i]."_".$arv.".counts2");
       }
    }
 }
@@ -273,7 +270,7 @@ close SISSE;
 
 ## CYCLE FOR DIFFERENT SET OF K-MERS (STEP OF 10000) IF NEEDED
 foreach $arv (@arvud){
-   open KMER, "k-merid_unic_".$arv."_NIPT.db" or die;
+   open KMER, "".$ARGV[1]."_".$arv."_NIPT.db" or die;
    $rida = 2;
    while(<KMER>){
       chomp;
@@ -285,7 +282,7 @@ foreach $arv (@arvud){
 
  
    open NIMED, "$mens" or die;
-   open VALJA, ">input_nimekiri_".$arv.".txt" or die;
+   open VALJA, ">".$ARGV[1]."_".$arv.".txt" or die;
    $tulp = 1;
    while(<NIMED>){
       chomp;
@@ -329,5 +326,5 @@ foreach $arv (@arvud){
    close VALJA;
 
 ### CREATING MODEL
-   system("Rscript MODEL.R input_nimekiri_".$arv.".txt mudel_nimekiri_".$arv.".Rdata");
+   system("Rscript MODEL.R ".$ARGV[1]."_".$arv.".txt ".$ARGV[1]."_".$arv.".Rdata");
 }
