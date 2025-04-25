@@ -77,6 +77,31 @@ Command line in case of this example, if starting with .bam file would be:
 ```bash
 perl Y-mer.pl B M213E_50k
 ```
+
+### Short Explanation Of Generating binary k-mer list files
+Lists files are crucial and if users haven’t them earlier, then they have to generate (may proceed separately, but then Y-mer.pl have to be modified by the specialist).  
+Since the input file type of glistmaker can only be .fastq ro fastq.gz, the .cram and .bam files need to be converted to .fastq or .fastq format, e.g. using samtools. Note, that the .bam and .cram files need to be indexed first before the conversion. Regardless of the choice of the B, C or F options, the data files have to be made available for the next steps through a working_path specified by the user. 
+
+The BAM file should be first downloaded, copied into the working path, and converted to the .fastq format and k-mer list file should be available in the same folder, e.g. as “sample_25.list” if using 25-mers (there is no other option for k-mer length for the current application):
+```bash
+wget /web_path/sample.bam*
+cp sample.bam* working_path
+samtools fastq -1 working_path/sample_1.fq -2 working_path/sample_2.fq working_path/sample.bam
+genometester_path/glistmaker working_path/sample_1.fq working_path/sample_2.fq -w 25 -o list_path/sample
+```
+
+Similarly with CRAM files:
+```bash
+wget /web_path/sample.cram*
+cp sample.cram* working_path
+samtools fastq -1 working_path/sample_1.fq -2 working_path/sample_2.fq working_path/sample.cram
+genometester_path/glistmaker working_path/sample_1.fq working_path/sample_2.fq -w 25 -o list_path/sample
+```
+Fastq file:
+```bash
+genometester_path/glistmaker working_path/sample_1.fq working_path/sample_2.fq -w 25 -o list_path/sample
+```
+
 ### System Requirements
 - **SSD**: ~30 GB per sample  
 - **RAM**: ~80 GB  
