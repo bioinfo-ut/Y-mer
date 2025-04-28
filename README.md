@@ -36,12 +36,13 @@ It is recommended to create a directory listing in by model ID (M21W, M21E, M21N
 
 ---
 ### File Types & Data Structures
-- sample - in most cases, it is a fastq file prefix (ID), but every temporary file is identified by the ID of the sample
+- sample - in most cases,  is a .fastq file prefix (ID) of the individual and each temporary file is identified by the same ID.
 - model - mainly Rdata R formatted file prefix (ID), containing information needed for calling HG represented in the model. 
 - lists - mainly temporary binary files containing information about k-mer sequences and frequencies. The current workflow contains different k-mer manipulation options to prepare data for the model.
 - tables - collected k-mers with frequencies from male samples to inputs for MWT.R and MODEL.R
 - temporary files - files either selecting k-mers via list files or used for the generation of table files.
 - result files from model training - model.Rdata, model.dbb and model.txt
+
 
 ---
 ## 🧪 Model Creation & Training
