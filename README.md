@@ -203,6 +203,12 @@ Try the web-based version here:
 
 The distance between the sample and the haplogroup gh profiles, dh, indicates how similar the number of repeats profile of a sample is to the haplogroup average copy-number profile. A more detailed description of the output can be found in the supplementary methods file of the Y-mer publication (Puurand et al. 2025).
 
+The key results are reported in the last line of the output in four or more columns:
+sample - sample ID
+coverage - Y chromosome coverage estimated from k-mer based exact matches (this is expected to be lower than mapping based coverage, which tolerates mismatches)
+haplogroup  - predicted most likely haplogroup
+pvalue - estimated on the basis of the distances of the target sample to competing haplogroups used in the model
+Alternatives - alternative haplogroups are reported in increasing order of their p-values if the p-value of the primary haplogroup is higher than 0.05
 
 ```bash
 [1] "Diagnostics plots will not be produced"
