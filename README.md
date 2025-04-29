@@ -124,6 +124,8 @@ After processing, retain:
 ## 🧬 Haplogroup Prediction (Pre-trained Models)
 The currently available models include 11 basic haplogroups (AB, C, E, G, H, IJ, LT, N, O, Q, R) that are common at the World (W), 22 (AB, C, E1, E2, E4, G, H, I1, I2, J1, J2, LT, N3, N4, O1, O2'5, O3, O6, Q, R1a, R1b, R2) at European (E), and 23 (E2a, G2a, I1a, I1d, I1i, I1m, I2, Ic, J1, J2a, J2b, LT, N3a3, N3a4, Q, R1a1, R1a2, R1b1, R1b11, R1b2, R1b3, R1b6, R1b8) at Northeast European (NE) levels. The k-mers used in the models have been extracted from sets of 21, 110, 213 and 222 Y chromosomes and the models have been trained on subsets of individuals from the 1000G and EGC projects data. The I1 and R1 models predict only the specified subclades of the given haplogroups.
 
+It is recommended to create a directory for each model. The names of the directories should  specify the model ID: M21W, M21E, M21NE, M110W, M213E, M222NE, M43I1, and M80R1. Next, two model-specific files should be downloaded to each directory. These files will have the same model ID but different extensions: (i) model.Rdata and model.txt if using sample_25.list with glistquery option or (ii) model.Rdata and model.dbb files if using gmer_counter option (see below the “A. DETERMINING K-MER FREQUENCIES” section).  The model.Rdata file contains information about the k-mer frequencies by haplogroups, model.txt and model.dbb files contain the final list of k-mers used in the model. 
+
 ### Available Models .Rdata
 `M21W`, `M21E`, `M21NE`, `M110W`, `M213E`, `M222NE`, `M43I1`, `M80R1`
 
