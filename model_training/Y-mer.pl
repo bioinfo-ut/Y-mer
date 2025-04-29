@@ -7,6 +7,7 @@
 # PERL
 # GENOMETESTER4 PACKAGE https://github.com/bioinfo-ut/GenomeTester4
 # R
+# samtools if starting from bam/cram files
 
 #REQUIRED R, PERL SCRIPTS AND SINGLE COPY K-MERS
 # add_compare_depth_k_mers.pl    #FINDS INTERSEQTION BETWEEN MODEL AND DEPTH K-MERS AND EXCLUDES THEM
@@ -19,14 +20,17 @@
 # 5 STEPS ARE: CREATING FEMALES K-MERS UNION LIST, CREATING HG-S INTERSECTION LISTS, CREATING CHRY K-MERS LIST,
 # FINDING INFORMATIVE K-MERS AND BUILDING THE MODEL
 
+# running
+# perl Y-mer.pl <file type> <name of a model>
+# file type B - bam, C -cram, F -fastq 
 
 #
 $gtester = "GenomeTester4/src";    #we use GenomeTester4 for k-mer manipulations
 $working = "lists";                #SSD disk with best ReadWrite parameters
 $dsR = "data";                     #R scripts, calculated k-mer counts
 $lists = "lists";                  #k-mer binary list locations
-$men = "men.txt";                #one group of samples
-$women = "women.txt";            #second group of samples
+$men = "men.txt";                  #one group of samples
+$women = "women.txt";              #second group of samples
 
 
 # 1. FEMALE UNION 
