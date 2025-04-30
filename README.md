@@ -108,37 +108,35 @@ genometester_path/glistmaker working_path/sample_1.fq working_path/sample_2.fq -
 ### System Requirements
 - **SSD**: ~30 GB per sample  
 - **RAM**: ~80 GB  
-- **Runtime**: ~1.5 hours per sample (SSD speed-dependent)
+- **Runtime**: ~1.5-2 hours per sample (SSD speed-dependent) plus input files coping time
 
 After processing, retain:
-- Model `.Rdata` file  
-- `.dbb` database file  
-- Final `.txt` count table  
+- `model.Rdata` model file  
+- `model.dbb` database file (k-mer frequencies counting with gmer_counter) 
+- `model.txt` k-mer file (k-mer frequencies counting with glistquery)  
 - Optional: male-only k-mer binary list for future training
 
 > All scripts can be adapted for HPC parallelization (within ~3 hours). We're working on support for this.
 
 ---
-
-## 🧬 Haplogroup Prediction (Pre-trained Models)
-The currently available models include 11 basic haplogroups (AB, C, E, G, H, IJ, LT, N, O, Q, R) that are common at the World (W), 22 (AB, C, E1, E2, E4, G, H, I1, I2, J1, J2, LT, N3, N4, O1, O2'5, O3, O6, Q, R1a, R1b, R2) at European (E), and 23 (E2a, G2a, I1a, I1d, I1i, I1m, I2, Ic, J1, J2a, J2b, LT, N3a3, N3a4, Q, R1a1, R1a2, R1b1, R1b11, R1b2, R1b3, R1b6, R1b8) at Northeast European (NE) levels. The k-mers used in the models have been extracted from sets of 21, 110, 213 and 222 Y chromosomes and the models have been trained on subsets of individuals from the 1000G and EGC projects data. The I1 and R1 models predict only the specified subclades of the given haplogroups.
-
-It is recommended to create a directory for each model. The names of the directories should  specify the model ID: M21W, M21E, M21NE, M110W, M213E, M222NE, M43I1, and M80R1. Next, two model-specific files should be downloaded to each directory. These files will have the same model ID but different extensions: (i) model.Rdata and model.txt if using sample_25.list with glistquery option or (ii) model.Rdata and model.dbb files if using gmer_counter option (see below the “A. DETERMINING K-MER FREQUENCIES” section).  The model.Rdata file contains information about the k-mer frequencies by haplogroups, model.txt and model.dbb files contain the final list of k-mers used in the model. 
-
-### Available Models .Rdata
-`M21W`, `M21E`, `M21NE`, `M110W`, `M213E`, `M222NE`, `M43I1`, `M80R1`
-
-Each model uses:
-- `.txt` for `glistquery`
-- `.dbb` for `gmer_counter`
-
 ### 🔗 Model Downloads
 - [https://bioinfo.ut.ee/randomtandem/mudelid/](https://bioinfo.ut.ee/randomtandem/mudelid/)  
 - [https://doi.org/10.5281/zenodo.15089783](https://doi.org/10.5281/zenodo.15089783)
 
----
+It is recommended to create a directory for each model. The names of the directories should  specify the model ID: M21W, M21E, M21NE, M110W, M213E, M222NE, M43I1, and M80R1. Next, two model-specific files should be downloaded to each directory. These files will have the same model ID but different extensions: (i) model.Rdata and model.txt if using sample_25.list with glistquery option or (ii) model.Rdata and model.dbb files if using gmer_counter option (see below the “A. DETERMINING K-MER FREQUENCIES” section).  The model.Rdata file contains information about the k-mer frequencies by haplogroups, model.txt and model.dbb files contain the final list of k-mers used in the model. 
 
-## 🔢 Counting K-mer Frequencies
+---
+## 🧬 Haplogroup Prediction Using Already Tested Models
+
+The currently available models include 
+- 11 basic haplogroups (AB, C, E, G, H, IJ, LT, N, O, Q, R) that are common at the World (W),
+- 22 (AB, C, E1, E2, E4, G, H, I1, I2, J1, J2, LT, N3, N4, O1, O2'5, O3, O6, Q, R1a, R1b, R2) at European (E), and
+- 23 (E2a, G2a, I1a, I1d, I1i, I1m, I2, Ic, J1, J2a, J2b, LT, N3a3, N3a4, Q, R1a1, R1a2, R1b1, R1b11, R1b2, R1b3, R1b6, R1b8) at Northeast European (NE) levels.
+The k-mers used in the models have been extracted from sets of 21, 110, 213 and 222 Y chromosomes and the models have been trained on subsets of individuals from the 1000G and EGC projects data. The I1 and R1 models predict only the specified subclades of the given haplogroups.
+
+For the following steps, the user will need to specify the path to the folder containing target .fastq files the Yhg of which will be determined and the path to the folder containing genome tester components.
+
+## 🔢 1. Determining K-mer Frequencies
 Firstly, the k-mer frequencies in the target .fastq files will have to be determined. There are multiple ways to do that. The first two options apply in cases where the user wants to run only just one model at a time, the third option is for testing multiple models.
 
 ### Option 1: Using binary gmer_counter database and fastq file(s) as input,:
@@ -158,9 +156,7 @@ glistmaker sample.fastq -w 25 -o sample
 glistquery sample_25.list -f model.txt | cut -f 2 > sample.counts
 ```
 
----
-
-## 🔍 Predicting Haplogroups
+## 🔍 2. Calling HG-s
 
 Run the R script to classify:
 ```bash
