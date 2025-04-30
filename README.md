@@ -3,8 +3,8 @@ ALMOST MODIFICATED!
 
 **Y-mer**  is a tool for determining human Y chromosome haplogroups from ultra-low-coverage (0.005-1x with high confidence) sequence data using Y chromosome-specific k-mers. Its workflow allows users either
 
-i) to create and train their own models from high-coverage reference sequences, or 
-ii) to use already tested models 
+- to create and train their own models from high-coverage reference sequences, or
+- to use already tested models 
 
 Y-mer will use either mapped (.bam) or unmapped (.fastq) sequence data as input and return the most supported haplogroup names in its output, along with statistical evidence for the support. 
 
