@@ -27,11 +27,6 @@ Puurand T, Möls M, Kaplinski L, Maal K, Krjutskov K, Salumets A, Kivisild T, Re
 - [`GenomeTester4`](https://github.com/bioinfo-ut/Genometester4) Must be installed and used with the local installation path.
 - [`samtools`](https://github.com/samtools/samtools) if starting with BAM/CRAM files 
 
-### Download Required Files
-It is recommended to create a directory listing in by model ID (M21W, M21E, M21NE, M110W, M213E, M222NE, M43I1, and M80R1), and download the model.Rdata and model.txt or/and model.dbb files by model ID user plan to use.The model.Rdata file contains information about the k-mer frequencies by haplogroups, model.txt and model.dbb files contain the final list of k-mers used in the model. 
-- Pre-trained models and resources:  
-  - [https://doi.org/10.5281/zenodo.15089783](https://doi.org/10.5281/zenodo.15089783)  
-  - [https://bioinfo.ut.ee/randomtandem/mudelid/](https://bioinfo.ut.ee/randomtandem/mudelid/)
 
 ---
 ### File Types & Data Structures
