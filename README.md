@@ -79,16 +79,16 @@ While the input file type of glistmaker can be .fastq, fastq.gz, .cram or .bam, 
 
 The .bam file should be first downloaded, copied into the working path, and converted to the .fastq format and k-mer list file should be available in the same folder, e.g. as “sample_25.list” if using 25-mers (there is no other option for k-mer length for the current application):
 ```bash
-wget /web_path/sample.bam*
-cp sample.bam* working_path
+wget /web_path/sample.bam
+cp sample.bam working_path
 samtools fastq -1 working_path/sample_1.fq -2 working_path/sample_2.fq working_path/sample.bam
 genometester_path/glistmaker working_path/sample_1.fq working_path/sample_2.fq -w 25 -o list_path/sample
 ```
 
 Similarly with CRAM files:
 ```bash
-wget /web_path/sample.cram*
-cp sample.cram* working_path
+wget /web_path/sample.cram
+cp sample.cram working_path
 samtools fastq -1 working_path/sample_1.fq -2 working_path/sample_2.fq working_path/sample.cram
 genometester_path/glistmaker working_path/sample_1.fq working_path/sample_2.fq -w 25 -o list_path/sample
 ```
