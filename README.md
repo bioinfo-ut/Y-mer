@@ -1,16 +1,14 @@
-ALMOST MODIFICATED!
 # Y-mer
 
-**Y-mer**  is a tool for determining human Y chromosome haplogroups from ultra-low-coverage (0.005-1x with high confidence) sequence data using Y chromosome-specific k-mers. Its workflow allows users either
+**Y-mer**  is a tool for determining human Y chromosome haplogroups from ultra-low-coverage (0.005-1x with high confidence) sequence data using Y chromosome-specific k-mers. Its workflow allows users either:
 
-- to create and train their own models from high-coverage reference sequences, or
-- to use already tested models 
+- to create their own models from high-coverage reference sequences, or
+- to use existing models for prediction of haplogroups 
 
-Y-mer will use either mapped (.bam) or unmapped (.fastq) sequence data as input and return the most supported haplogroup names in its output, along with statistical evidence for the support. 
+When used for prediction, the Y-mer needs either mapped (.bam) or unmapped (.fastq) sequence data as input and will return the most likely haplogroup names in its output, along with statistical evidence for the support. 
 
 
 ---
-
 ## 📖 Citation
 
 Puurand T, Möls M, Kaplinski L, Maal K, Krjutskov K, Salumets A, Kivisild T, Remm M. (2025).  
@@ -18,7 +16,6 @@ Puurand T, Möls M, Kaplinski L, Maal K, Krjutskov K, Salumets A, Kivisild T, Re
 [https://doi.org/10.21203/rs.3.rs-5042960/v1](https://doi.org/10.21203/rs.3.rs-5042960/v1)
 
 ---
-
 ## 🚀 Quick Start In Linux
 
 ### Requirements
@@ -31,8 +28,8 @@ Puurand T, Möls M, Kaplinski L, Maal K, Krjutskov K, Salumets A, Kivisild T, Re
 ---
 ### File Types & Data Structures
 - sample - in most cases,  is a .fastq file prefix (ID) of the individual and each temporary file is identified by the same ID.
-- model - mainly Rdata R formatted file prefix (ID), containing information needed for calling HG represented in the model. 
-- lists - mainly temporary binary files containing information about k-mer sequences and frequencies. The current workflow contains different k-mer manipulation options to prepare data for the model.
+- model - Rdata R formatted file prefix (ID), containing information needed for calling HG represented in the model. 
+- lists - binary files created by GenomeTester4, containing information about k-mer sequences and their frequencies. 
 - tables - collected k-mers with frequencies from male samples to inputs for MWT.R and MODEL.R
 - temporary files - files either selecting k-mers via list files or used for the generation of table files.
 - result files from model training - model.Rdata, model.dbb and model.txt
@@ -41,13 +38,13 @@ Puurand T, Möls M, Kaplinski L, Maal K, Krjutskov K, Salumets A, Kivisild T, Re
 ---
 ## 🧪 Model Creation & Training
 
-At the moment, our ready-to-use models are adapted for the detection of the main sub-clades of haplogroups common in present-day Europe and miss many important haplogroups that are common outside Europe.  These restrictions were set by our use of  the 1000 Genomes Project and the Estonian Biobank data as references in the models we have generated and tested. When working with data from other world regions or when aiming for higher haplogroup resolution within a region, the users can design their own haplogroup lists and train their own models based on high quality reference data they have access to. 
+At the moment, our ready-to-use models are adapted for the detection of the main sub-clades of chrY haplogroups common in present-day Europe and miss many important haplogroups that are common outside Europe.  These restrictions were set by our use of the 1000 Genomes Project and the Estonian Biobank data as references in the models we have generated and tested. When working with data from other world regions or when aiming for higher haplogroup resolution within a region, the users can design their own haplogroup lists and train their own models based on high quality reference data they have access to. 
 
 ### 1. Prepare Input Files
-The first step of creating a new model involves the generation of a list from .bam (.cram or .fastq) files of high quality genomes representing, ideally with at least 10 individuals per each targeted haplogroup, from the range of haplogroups to be examined. The IDs of each of these files should be presented as a list in a table, similar to the example file [`men.txt`](https://github.com/bioinfo-ut/Y-mer/blob/main/model_training/men.txt). In this tab-separated file, each line represents one haplogroup to be included in the model. The name of each haplogroup is shown in the first column. Other columns show ID-s of individuals from the given haplogroup. There is no limit set to the number of individuals per haplogroup but 10 individuals is advisable as a minimum.
+The first step of creating a new model involves the generation of a k-mer list from .bam (.cram or .fastq) files of high quality genomes, ideally with at least 10 individuals per each targeted haplogroup. The IDs of each of these files should be presented as a list in a table, similar to the example file [`men.txt`](https://github.com/bioinfo-ut/Y-mer/blob/main/model_training/men.txt). In this tab-separated file, each line represents one haplogroup to be included in the model. The name of each haplogroup is shown in the first column. Other columns show ID-s of individuals from the given haplogroup. There is no limit set to the number of individuals per haplogroup but 10 individuals is advisable as a minimum.
 
  
-The structure of the [`women.txt`](https://github.com/bioinfo-ut/Y-mer/blob/main/model_training/women.txt) file, containing the ID-s of female WGS data from which female k-mer lists will be created, is the same as the men.txt but has only just one row, where the entry in the first column should be ‘N’, followed by entries of the IDs of female WGS data to be used. In the case of available models, we have used 15 female high-coverage genomes for building female k-mer lists.
+Another required file is [`women.txt`](https://github.com/bioinfo-ut/Y-mer/blob/main/model_training/women.txt), which should contain the ID-s of female WGS data from which female k-mer lists will be created. The structure of the [`women.txt`](https://github.com/bioinfo-ut/Y-mer/blob/main/model_training/women.txt) file is the same as the men.txt, but has only just one row, where the entry in the first column should be ‘N’, followed by entries of the IDs of female WGS data to be used. In the case of available models, we have used 15 female high-coverage genomes for building female k-mer lists.
 
 
 - Include at least **10 individuals per haplogroup**
@@ -76,7 +73,7 @@ perl Y-mer.pl B M213E_50k
 ```
 Note that for model creation, Y-mer.pl will download a selection of 1000 GP high coverage genome cram files as reference data. These data will be stored temporarily taking up to 16GB of storage.
 
-### Short Explanation Of Generating binary k-mer list files
+### Short Explanation Of Generating Binary k-mer List Files
 List files can be downloaded for existing models, or, in case of new models, have to be generated by the user. In the latter case, Y-mer.pl has to be modified to adapt the model changes.  
 While the input file type of glistmaker can be .fastq, fastq.gz, .cram or .bam, the Y-mer will ultimately need all files  to be converted to .fastq or .fastq format, e.g. using samtools. Note, that the .bam and .cram files need to be indexed first before the conversion. Regardless of the choice of the B, C or F options, the data files have to be made available for the next steps through a working_path specified by the user. 
 
@@ -103,7 +100,7 @@ genometester_path/glistmaker working_path/sample_1.fq working_path/sample_2.fq -
 ### System Requirements
 - **SSD**: ~30 GB per sample  
 - **RAM**: ~80 GB  
-- **Runtime**: ~1.5-2 hours per sample (SSD speed-dependent) plus input files coping time
+- **Runtime**: ~1.5-2 hours per sample (SSD speed-dependent) plus input files copying time
 
 After processing, retain:
 - `model.Rdata` model file  
@@ -115,7 +112,7 @@ After processing, retain:
 
 
 ---
-## 🧬 Haplogroup Prediction Using Already Tested Models
+## 🧬 Haplogroup Prediction Using Existing Models
 
 The currently available models include 
 - 11 basic haplogroups (AB, C, E, G, H, IJ, LT, N, O, Q, R) that are common at the World (W),
@@ -132,27 +129,27 @@ It is recommended to create a directory for each model. The names of the directo
 
 For the following steps, the user will need to specify the path to the folder containing target .fastq files the Yhg of which will be determined and the path to the folder containing genome tester components.
 
-## 🔢 1. Determining K-mer Frequencies
-Firstly, the k-mer frequencies in the target .fastq files will have to be determined. There are multiple ways to do that. The first two options apply in cases where the user wants to run only just one model at a time, the third option is for testing multiple models.
+## 🔢 1. Counting K-mer Frequencies
+Firstly, the k-mer frequencies in the genomic data (.fastq files, .bam files) of a studied sample will have to be determined. There are multiple ways to do that. The first two options apply in cases where the user wants to run only just one model at a time, the third option is for testing multiple models.
 
-### Option 1: Using binary gmer_counter database and fastq file(s) as input,:
+### Option 1: Using binary gmer_counter database and .fastq file(s) as input:
 ```bash
 gmer_counter -dbb model.dbb sample.fastq | cut -f 3 | tail -n +3 > sample.counts
 ```
 
-### Option 2: Same as in Option 1, but using .bam as an input:
+### Option 2: Using binary gmer_counter database and .bam file(s) as an input:
 
 ```bash
 samtools fasta sample.bam | gmer_counter -dbb model.dbb - | cut -f 3 | tail -n +3 > sample.counts
 ```
 
-### Option 3: List file had prepared with GenomeTester4, preferably if using multiple models:
+### Option 3: Using list file of sample's personal genome, prepared with GenomeTester4:
 ```bash
 glistmaker sample.fastq -w 25 -o sample
 glistquery sample_25.list -f model.txt | cut -f 2 > sample.counts
 ```
 
-## 🔍 2. Calling HG-s
+## 🔍 2. Calling Haplogroups
 
 Run the R script to classify:
 ```bash
@@ -170,9 +167,9 @@ The Sample.Rdata file include only the last two lines of the Sample.txt output.
 ---
 
 ## 🌐 Web Tool
-Apart from the option to run haplogroup calling with existing models in the cluster of the user, we have developed also a simplified WEB tool version which uses fastq or fastq.gz files as input. The user may choose for HG predictions between all models provided by us. Results page contains links to .txt and Rdata output files with HG predictions as explained above. Fastq inputfile size limit is 0.5GB and retrieving time depends on uploaded file size and count of selected models.
+Apart from the option to run haplogroup calling with existing models in the cluster of the user, we have developed also a simplified web tool version which uses .fastq or fastq.gz files as input. The user may choose for HG predictions between all models provided by us. Results page contains links to .txt and Rdata output files with HG predictions as explained above. Fastq inputfile size limit is 0.5GB and retrieving time depends on uploaded file size and the number of selected models.
 
-Y-mer uses Y chromosome-specific k-mers and distance-based models to predict Y chromosome haplogroups (Yhg). With this tool the user can upload their own data in the form of a fastq file.  Y-mer will determine the closest Yhg for the uploaded sample in the chosen model on the basis of highest similarity.
+Y-mer uses chrY-specific k-mers and distance-based models to predict Y chromosome haplogroups (Yhg). With this tool the user can upload their own data in the form of a fastq file.  Y-mer will determine the closest haplogroup of the uploaded sample in the chosen model on the basis of highest similarity.
 
 Try the web-based version here:  
 🔗 [https://bioinfo.ut.ee/randomtandem/Y-mer/](https://bioinfo.ut.ee/randomtandem/Y-mer/)
@@ -197,7 +194,7 @@ The distance between the sample and the haplogroup gh profiles, dh, indicates ho
 The key results are reported in the last line of the output in four or more columns:
 - sample - sample ID
 - coverage - Y chromosome coverage estimated from k-mer based exact matches (this is expected to be lower than mapping based coverage, which tolerates mismatches)
-- haplogroup  - predicted most likely haplogroup
+- haplogroup - predicted most likely haplogroup
 - pvalue - estimated on the basis of the distances of the target sample to competing haplogroups used in the model
 - alternatives - alternative haplogroups are reported in increasing order of their p-values if the p-value of the primary haplogroup is higher than 0.05
 
@@ -224,5 +221,4 @@ DA189     DA189 0.00553951          R 1.549354e-17
 
 ## 📬 Contact
 
-For questions or contributions, please open an issue or contact the developers through [bioinfo.ut.ee](https://bioinfo.ut.ee).
-Formatted by ChatGPT
+For questions or contributions, please open an issue in GitHub or contact the developers [tarmo.puurand@ut.ee](mailto:tarmo.puurand@ut.ee).
