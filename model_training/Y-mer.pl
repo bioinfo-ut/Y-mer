@@ -59,7 +59,7 @@ while(<SISSE>){
    for($i = 1; $i < scalar(@tmp); $i++){
       system("wget $samples{$tmp[$i]}*") if $ARGV[0] ne "F";
       system("cp $samples_name{$tmp[$i]}* $working") if $ARGV[0] ne "F";
-      system("samtools bam2fq -1 $working/".$tmp[$i]."_1.fastq -2 $working/".$tmp[$i]."_2.fastq -n $orking/$samples_name{$tmp[$i]}") if $ARGV[0] ne "F";
+      system("samtools bam2fq -1 $working/".$tmp[$i]."_1.fastq -2 $working/".$tmp[$i]."_2.fastq $orking/$samples_name{$tmp[$i]}") if $ARGV[0] ne "F";
       system("rm $working/$samples_name{$tmp[$i]}*") if $ARGV[0] ne "F";
       system("$gtester/glistmaker $working/".$tmp[$i]."_1.fastq $working/".$tmp[$i]."_2.fastq -w 25 -o $working/".$tmp[$i]."");
       ### C EXCLUDING K-MERS WITH LOWER FREQUENCIES
@@ -103,7 +103,7 @@ while(<SISSE>){
    for($i = 1; $i < scalar(@tmp); $i++){
       system("wget $samples{$tmp[$i]}*") if $ARGV[0] ne "F";
       system("cp $samples_name{$tmp[$i]}* $working") if $ARGV[0] ne "F";
-      system("samtools bam2fq -1 $working/".$tmp[$i]."_1.fastq -2 $working/".$tmp[$i]."_2.fastq -n $orking/$samples_name{$tmp[$i]}") if $ARGV[0] ne "F";
+      system("samtools bam2fq -1 $working/".$tmp[$i]."_1.fastq -2 $working/".$tmp[$i]."_2.fastq $orking/$samples_name{$tmp[$i]}") if $ARGV[0] ne "F";
       system("rm $working/$samples_name{$tmp[$i]}*") if $ARGV[0] ne "F";
       system("$gtester/glistmaker $working/".$tmp[$i]."_1.fastq $working/".$tmp[$i]."_2.fastq -w 25 -o $working/".$tmp[$i]."");
       ### C EXCLUDING K-MERS WITH LOWER FREQUENCIES
