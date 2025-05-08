@@ -81,7 +81,7 @@ The .bam file should be first downloaded, copied into the working path, and conv
 ```bash
 wget /web_path/sample.bam
 cp sample.bam working_path
-samtools fastq -1 working_path/sample_1.fq -2 working_path/sample_2.fq working_path/sample.bam
+samtools fastq -1 working_path/sample_1.fq -2 working_path/sample_2.fq -n working_path/sample.bam
 genometester_path/glistmaker working_path/sample_1.fq working_path/sample_2.fq -w 25 -o list_path/sample
 ```
 
@@ -89,7 +89,7 @@ Similarly with CRAM files:
 ```bash
 wget /web_path/sample.cram
 cp sample.cram working_path
-samtools fastq -1 working_path/sample_1.fq -2 working_path/sample_2.fq working_path/sample.cram
+samtools fastq -1 working_path/sample_1.fq -2 working_path/sample_2.fq -n working_path/sample.cram
 genometester_path/glistmaker working_path/sample_1.fq working_path/sample_2.fq -w 25 -o list_path/sample
 ```
 Fastq file:
