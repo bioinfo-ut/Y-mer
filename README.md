@@ -171,8 +171,8 @@ Apart from the option to run haplogroup calling with existing models in the clus
 
 Y-mer uses chrY-specific k-mers and distance-based models to predict Y chromosome haplogroups (Yhg). With this tool the user can upload their own data in the form of a fastq file.  Y-mer will determine the closest haplogroup of the uploaded sample in the chosen model on the basis of highest similarity.
 
-Try the web-based version here (temporarily not working):  
-🔗 [https://bioinfo.ut.ee/randomtandem/Y-mer/](https://bioinfo.ut.ee/randomtandem/Y-mer/)
+Try the web-based version here (working with Microsoft Edge):  
+🔗 [https://bioinfo.ut.ee/Y-mer/](https://bioinfo.ut.ee/Y-mer)
 
 - Accepts `.fastq` or `.fastq.gz`  
 - Select multiple models  
